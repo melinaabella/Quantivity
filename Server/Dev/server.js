@@ -1,13 +1,19 @@
+/**server.js
+ * Created by Robin Brossard
+ * Version 1.0
+ * Date Created: 31 Jan 2021
+ * Simple webserver that serves index.html
+ */
 
-
-
-
+//requires
 const http = require('http');
 const fs = require('fs');
 
+//host and port will need to be changed for deployment
 const hostname = '127.0.0.1';
 const port = 3000;
 
+//promise wrapper for the readFile function
 const readFile = (fileName, encoding) => {
 	return new Promise((resolve, reject) => {
 		fs.readFile(fileName, encoding, (err, data) => {
@@ -20,7 +26,7 @@ const readFile = (fileName, encoding) => {
 	});
 }
 
-
+//create the server and listen for requests
 const server = http.createServer((req, res) => {
 	
 	readFile(__dirname + '/index.html').then(contents => {
@@ -33,20 +39,6 @@ const server = http.createServer((req, res) => {
 		res.end(err);
 		return;
 	});
-		/*
-	fs.readFile(__dirname + '/index.html', (contents, err) => {
-		if (err) {
-			console.log(`Unable to read /index.html: ${err}`);
-			res.writeHead(500);
-			res.end(err);
-			return;
-		} else {
-			res.setHeader('Content-Type', 'text/html');
-			res.writeHead(200);
-			res.end(contents);
-		}
-	})
-	*/
 });
 
 server.listen(port, hostname, () => {
