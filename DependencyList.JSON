@@ -1,6 +1,6 @@
 {
+	"http": 2,
+	"fs": 2,
 	"readline": 3,
-	"http": 1,
-	"lodash": 1,
-	"fs": 1
+	"lodash": 2
 }

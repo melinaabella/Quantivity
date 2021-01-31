@@ -25,7 +25,7 @@ function traversedir(dir) {
             let scripts = files.filter((file) => {
                 return file.endsWith('.js');
             });
-            console.log('scanning for subdirectories, excluding nod_modules');
+            console.log('scanning for subdirectories, excluding node_modules');
             let subdirs = files.filter((file) => {
                 return (fs.statSync(dir + '/' + file).isDirectory()) &&
                     (file != 'node_modules');
