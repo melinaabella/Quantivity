@@ -1,8 +1,8 @@
 /**server.js
  * Created by Robin Brossard
- * Version 1.0
+ * Version 1.1
  * Date Created: 31 Jan 2021
- * Simple webserver that serves index.html
+ * Simple webserver that serves index.html as well as a linked stylesheet
  */
 
 //requires
@@ -28,17 +28,34 @@ const readFile = (fileName, encoding) => {
 
 //create the server and listen for requests
 const server = http.createServer((req, res) => {
+
+	switch(req.url) {
+		case '/quantivity_style.css':
+			readFile(__dirname + '/quantivity_style.css').then(contents => {
+				res.setHeader('Content-Type', 'text/css');
+				res.writeHead(200);
+				res.end(contents);
+			}).catch(err => {
+				console.log(`Unable to read /quantivity_style.css: ${err}`);
+				res.writeHead(500);
+				res.end(err);
+				return;
+			})
+			break;
+		default:
+			readFile(__dirname + '/index.html').then(contents => {
+				res.setHeader('Content-Type', 'text/html');
+				res.writeHead(200);
+				res.end(contents);
+			}).catch(err => {
+				console.log(`Unable to read /index.html: ${err}`);
+				res.writeHead(500);
+				res.end(err);
+				return;
+			});
+	}
 	
-	readFile(__dirname + '/index.html').then(contents => {
-		res.setHeader('Content-Type', 'text/html');
-		res.writeHead(200);
-		res.end(contents);
-	}).catch(err => {
-		console.log(`Unable to read /index.html: ${err}`);
-		res.writeHead(500);
-		res.end(err);
-		return;
-	});
+	
 });
 
 server.listen(port, hostname, () => {
