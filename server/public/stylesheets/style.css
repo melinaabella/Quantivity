@@ -1,0 +1,30 @@
+body {
+background: rgb(34,193,195);
+background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(255,215,128,1) 100%);
+text-align: center;
+}
+
+h2{
+  font-family: Georgia, sans-serif;
+  font-size: 5em;
+  letter-spacing: 3px;
+  
+}
+
+h3{
+  font-family: Georgia, sans-serif;
+  font-size: 2em;
+  letter-spacing: 3px;
+}
+
+p{
+  font-family: Georgia, sans-serif;
+  font-size: 20px;
+  letter-spacing: 1.5px;
+}
+
+h4{
+  font-family: Georgia, sans-serif;
+  font-size: 2em;
+  letter-spacing: 3px;
+}
