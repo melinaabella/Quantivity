@@ -14,7 +14,7 @@ router.get('/:download_id', (req, res, next) => {
 		filePath = filePath + 'Quantivity_Project_Proposal_2021.pdf'
 		break;
 	default:
-		throw 'Invalid download_id';
+		next(new Error ('Invalid download_id'));
 	}
 	return res.download(path.join(__dirname, filePath));
 	next();
