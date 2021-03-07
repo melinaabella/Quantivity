@@ -1,6 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
+import styled from 'styled-components';
+
+export const Grid = styled.div ``;
+export const Row = styled.div`
+  display: flex;
+`;
+export const Col = styled.div`
+  flex: ${(props) => props.size};
+`;
+
 
 class App extends React.Component {
   constructor(props) {
@@ -32,6 +42,23 @@ class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
           <p> {this.state.apiResponse} </p>
         </header>
+
+        <h1>Responsive Grid</h1>
+        <Grid>
+          <Row>
+            <Col size={1}>
+              Looooong column
+            </Col>
+          </Row><Row>
+            <Col size={2}>
+              Double the size of
+            </Col>
+            <Col size={1}>
+              ME
+            </Col>
+          </Row>
+        </Grid>
+
         
       </div>
     );

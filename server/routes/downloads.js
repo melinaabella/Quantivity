@@ -11,7 +11,10 @@ router.get('/:download_id', (req, res, next) => {
 		filePath = filePath + 'test_file.txt';
 		break;
 	case 'proposal':
-		filePath = filePath + 'Quantivity_Project_Proposal_2021.pdf'
+		filePath = filePath + 'Quantivity_Project_Proposal_2021.pdf';
+		break;
+	case 'specification':
+		filePath = filePath + 'Quantivity_Project_Specification_2021.pdf';
 		break;
 	default:
 		next(new Error ('Invalid download_id'));
