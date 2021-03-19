@@ -1,0 +1,8 @@
+{
+	"userdata": [
+		{"cat_id": 0, "cat_name": "Practice Violin", "cat_data": [1, 0, 1, 0, 1, 0, 1]},
+		{"cat_id": 1, "cat_name": "Write", "cat_data": [0, 1, 1, 0, 1, 1, 1]},
+		{"cat_id": 2, "cat_name": "Clean Room", "cat_data": [0, 1, 1, 0, 1, 1, 1]},
+		{"cat_id": 3, "cat_name": "Fourth thing", "cat_data": [0, 1, 1, 0, 1, 1, 1]}
+	]
+}

@@ -7,12 +7,26 @@ class Table extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			table_data: props.table_data
+			table_data: []
 		};
 	}
 
-	componentDidMount() {
+	callAPI() {
+		fetch('http://localhost:9000/getUserData').then((res) => {
+			return res.json();
+		}).then((myjson) => {
+			this.setState({
+				table_data: myjson.userdata
+			})
+		});
+	}
 
+	componentDidMount() {
+		this.callAPI();
+	}
+
+	componentWillUnmount() {
+		
 	}
 
 	flip_table_data (target_id, target_day) {
@@ -33,6 +47,7 @@ class Table extends React.Component {
 	}
 
 	renderTableData = () => {
+
 		return this.state.table_data.map((catagory) => {
 			let {cat_id, cat_name, cat_data} = catagory;
 			return (
