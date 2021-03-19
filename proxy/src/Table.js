@@ -15,28 +15,51 @@ class Table extends React.Component {
 
 	}
 
-	renderTableData() {
+	flip_table_data (target_id, target_day) {
+		let new_table_data;
+		new_table_data = this.state.table_data.map((catagory) => {
+			let {cat_id, cat_name, cat_data} = catagory;
+			if (cat_id == target_id) {
+				let new_catagory = catagory;
+				new_catagory.cat_data[target_day] = !cat_data[target_day];
+				return new_catagory;
+			} else {
+				return catagory;
+			}
+		});
+		this.setState({
+			table_data: new_table_data
+		});
+	}
+
+	renderTableData = () => {
 		return this.state.table_data.map((catagory) => {
-			let {cat_id, cat_name, cat_monday, cat_tuesday, cat_wednesday, cat_thursday, cat_friday, cat_saturday, cat_sunday} = catagory;
-			console.log(cat_name);
+			let {cat_id, cat_name, cat_data} = catagory;
 			return (
 				<tr key = {cat_id}>
+					
 					<td>{cat_name}</td>
-					<td>{cat_monday}</td>
-					<td>{cat_tuesday}</td>
-					<td>{cat_wednesday}</td>
-					<td>{cat_thursday}</td>
-					<td>{cat_friday}</td>
-					<td>{cat_saturday}</td>
-					<td>{cat_sunday}</td>
+					
+					{catagory.cat_data.map((data, index = 0) => {
+						return (
+							<td>
+								<input
+									//className="gridbox"
+									type="checkbox"
+									checked={data}
+									onChange={() => {this.flip_table_data(cat_id, index++)}}
+								/>
+							</td>
+						);
+					})}
 				</tr>
 			);
-		})
+		});
 	}
 
 	render() {
 		return(
-			<div className="Table">
+			<div className="grid-container">
 				<h1>Table header</h1>
 				<table>
 					<tbody>

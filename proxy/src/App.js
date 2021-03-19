@@ -5,9 +5,9 @@ import Table from './Table';
 
 
 const table_data = [
-	{cat_id: 1, cat_name: 'Practice Violin', cat_monday: 0, cat_tuesday: 1, cat_wednesday: 1, cat_thursday: 0, cat_friday: 0, cat_saturday: 0, cat_sunday: 0},
-	{cat_id: 2, cat_name: 'Write', cat_monday: 0.5, cat_tuesday: 0, cat_wednesday: 1, cat_thursday: 0, cat_friday: 0, cat_saturday: 0, cat_sunday: 0},
-	{cat_id: 3, cat_name: 'Clean Room', cat_monday: 0, cat_tuesday: 0, cat_wednesday: 0, cat_thursday: 0, cat_friday: 0, cat_saturday: 0, cat_sunday: 0},
+	{cat_id: 0, cat_name: 'Practice Violin', cat_data: [1, 0, 1, 0, 1, 0, 1]},
+	{cat_id: 1, cat_name: 'Write', cat_data: [0, 1, 1, 0, 1, 1, 1]},
+	{cat_id: 2, cat_name: 'Clean Room', cat_data: [0, 1, 1, 0, 1, 1, 1]},
 ];
 
 class App extends React.Component {
@@ -36,10 +36,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="App">
-				<header className="App-header"> 
-					<img src={logo} className="App-logo" alt="logo" />
-					<p> {this.state.apiResponse} </p>
-				</header>
+				
 				<Table table_data={table_data}/>
 				
 			</div>
