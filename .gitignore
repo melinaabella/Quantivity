@@ -1,4 +1,2 @@
-*/node_modules/
-Tools_and_Tests/Tools/node_modules
-proxy/node_modules
-server/node_modules
+**/node_modules/
+DependencyList.JSON
