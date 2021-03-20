@@ -9,7 +9,7 @@ var usersRouter = require('./routes/users');
 var testAPIRouter = require('./routes/testAPI');
 var aboutRouter = require('./routes/about');
 var downloadsRouter = require('./routes/downloads');
-var getUserDataRouter = require('./routes/getUserData');
+var userDataRouter = require('./routes/userData');
 var app = express();
 
 // view engine setup
@@ -28,7 +28,7 @@ app.use('/users', usersRouter);
 app.use('/testAPI', testAPIRouter);
 app.use('/about', aboutRouter);
 app.use('/downloads', downloadsRouter);
-app.use('/getUserData', getUserDataRouter);
+app.use('/userData', userDataRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -42,8 +42,12 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
+  console.error(err);
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', {
+	  message: err.message,
+	  error: err
+  });
 });
 
 module.exports = app;

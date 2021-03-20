@@ -11,22 +11,36 @@ class Table extends React.Component {
 		};
 	}
 
-	callAPI() {
-		fetch('http://localhost:9000/getUserData').then((res) => {
+	fetchAPI() {
+		fetch('http://localhost:9000/userData/get').then((res) => {
 			return res.json();
 		}).then((myjson) => {
 			this.setState({
 				table_data: myjson.userdata
 			})
+		}).catch((err) => {
+			console.log(err);
+		});
+	}
+
+	postAPI() {
+		fetch('http://localhost:9000/userData/set', {
+			method: "post",
+			headers: { 'Content-type': "application/json" },
+			body: JSON.stringify(this.state.table_data)
+		}).then((res) => {
+			console.log(res);
+		}).catch((err) => {
+			console.log(err);
 		});
 	}
 
 	componentDidMount() {
-		this.callAPI();
+		this.fetchAPI();
 	}
 
 	componentWillUnmount() {
-		
+		this.postAPI();			
 	}
 
 	flip_table_data (target_id, target_day) {
@@ -74,13 +88,21 @@ class Table extends React.Component {
 
 	render() {
 		return(
-			<div className="grid-container">
+			<div>
 				<h1>Table header</h1>
-				<table>
+				<table className="grid-container">
 					<tbody>
 						{this.renderTableData()}
 					</tbody>
 				</table>
+				<input
+					className="savebutton"
+					title="Save"
+					type="button"
+					onClick={() => {
+						this.postAPI();
+					}}
+				/>
 			</div>
 		);
 	}

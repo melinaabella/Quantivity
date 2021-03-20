@@ -1,8 +1,56 @@
 {
-	"userdata": [
-		{"cat_id": 0, "cat_name": "Practice Violin", "cat_data": [1, 0, 1, 0, 1, 0, 1]},
-		{"cat_id": 1, "cat_name": "Write", "cat_data": [0, 1, 1, 0, 1, 1, 1]},
-		{"cat_id": 2, "cat_name": "Clean Room", "cat_data": [0, 1, 1, 0, 1, 1, 1]},
-		{"cat_id": 3, "cat_name": "Fourth thing", "cat_data": [0, 1, 1, 0, 1, 1, 1]}
-	]
+    "userdata": [
+        {
+            "cat_id": 0,
+            "cat_name": "Practice Violin",
+            "cat_data": [
+                true,
+                0,
+                true,
+                0,
+                true,
+                0,
+                true
+            ]
+        },
+        {
+            "cat_id": 1,
+            "cat_name": "Write",
+            "cat_data": [
+                0,
+                true,
+                false,
+                true,
+                false,
+                true,
+                false
+            ]
+        },
+        {
+            "cat_id": 2,
+            "cat_name": "Clean Room",
+            "cat_data": [
+                true,
+                false,
+                true,
+                0,
+                true,
+                false,
+                true
+            ]
+        },
+        {
+            "cat_id": 3,
+            "cat_name": "Fourth thing",
+            "cat_data": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+            ]
+        }
+    ]
 }
