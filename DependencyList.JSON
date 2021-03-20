@@ -2,5 +2,9 @@
 	"http": 2,
 	"fs": 2,
 	"readline": 3,
-	"lodash": 2
+	"lodash": 2,
+	"express": 3,
+	"path": 3,
+	"debug": 2,
+	"server:server": 2
 }
