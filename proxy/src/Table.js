@@ -7,11 +7,13 @@ class Table extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			table_data: []
+			table_data: [],
+			didgetdata: false
 		};
 	}
 
 	fetchAPI() {
+		console.log("fetchAPI called");
 		fetch('http://localhost:9000/userData/get').then((res) => {
 			return res.json();
 		}).then((myjson) => {
@@ -24,6 +26,7 @@ class Table extends React.Component {
 	}
 
 	postAPI() {
+		console.log("postAPI called");
 		fetch('http://localhost:9000/userData/set', {
 			method: "post",
 			headers: { 'Content-type': "application/json" },
@@ -36,7 +39,14 @@ class Table extends React.Component {
 	}
 
 	componentDidMount() {
+
+		console.log("componentDidMount called");
+
 		this.fetchAPI();
+
+		this.setState({
+			didgetdata: true
+		});
 	}
 
 	componentWillUnmount() {
@@ -58,6 +68,16 @@ class Table extends React.Component {
 		this.setState({
 			table_data: new_table_data
 		});
+	}
+
+	renderDate() {
+		let today = new Date(); // 30
+		let day = today.getDay(); // 4
+		let monday = new Date();
+
+		monday.setDate(today.getDate() - (today.getDay() - 1));
+
+		return (toString(monday.getFullYear) + '/' + (monday.getMonth() + 1) + '/' + monday.getDate());
 	}
 
 	renderTableData = () => {
@@ -86,23 +106,37 @@ class Table extends React.Component {
 		});
 	}
 
+	componentDidUpdate() {
+
+	}
+
 	render() {
+		console.log("render called");
+		if (this.state.didgetdata == true) {
+			this.postAPI();
+		}
 		return(
-			<div>
-				<h1>Table header</h1>
-				<table className="grid-container">
+			<div className="grid-container">
+				
+				<table>
+					<thead>
+						<tr>
+							<td>
+								{this.renderDate()}
+							</td>
+							<td>Monday</td>
+							<td>Tuesday</td>
+							<td>Wednesday</td>
+							<td>Thursday</td>
+							<td>Friday</td>
+							<td>Saturday</td>
+							<td>Sunday</td>
+						</tr>
+					</thead>
 					<tbody>
 						{this.renderTableData()}
 					</tbody>
 				</table>
-				<input
-					className="savebutton"
-					title="Save"
-					type="button"
-					onClick={() => {
-						this.postAPI();
-					}}
-				/>
 			</div>
 		);
 	}

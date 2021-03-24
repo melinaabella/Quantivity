@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import Table from './Table';
+import Entrybox from './Entrybox';
 
 class App extends React.Component {
 	
@@ -25,6 +26,7 @@ class App extends React.Component {
 			<div className="App">
 
 				<Table/>
+
 				
 			</div>
 		);

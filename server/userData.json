@@ -2,54 +2,80 @@
     "userdata": [
         {
             "cat_id": 0,
-            "cat_name": "Practice Violin",
+            "cat_name": "First Thing",
             "cat_data": [
                 true,
-                0,
                 true,
-                0,
                 true,
-                0,
+                true,
+                true,
+                true,
                 true
             ]
         },
         {
             "cat_id": 1,
-            "cat_name": "Write",
+            "cat_name": "Second Thing",
             "cat_data": [
-                0,
                 true,
                 false,
                 true,
                 false,
+                true,
                 true,
                 false
             ]
         },
         {
             "cat_id": 2,
-            "cat_name": "Clean Room",
+            "cat_name": "Third Thing",
             "cat_data": [
                 true,
                 false,
                 true,
-                0,
                 true,
-                false,
+                true,
+                true,
                 true
             ]
         },
         {
             "cat_id": 3,
-            "cat_name": "Fourth thing",
+            "cat_name": "Fourth Thing",
             "cat_data": [
                 true,
-                true,
-                true,
-                true,
+                false,
+                false,
+                false,
                 true,
                 true,
                 true
+            ]
+        },
+        {
+            "cat_id": 4,
+            "cat_name": "Five Thing",
+            "cat_data": [
+                true,
+                false,
+                false,
+                false,
+                true,
+                true,
+                false
+            ]
+        },
+        {
+            "cat_id": 5,
+            "cat_name": "Sixth Thing",
+            "cat_data": [
+                true,
+                false,
+                false,
+                false,
+                true,
+                true,
+                false
             ]
         }
     ]
