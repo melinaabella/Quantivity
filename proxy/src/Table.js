@@ -1,38 +1,52 @@
 import React from 'react';
-import 'react-table';
-import { useTable } from 'react-table';
 
 class Table extends React.Component {
+
+
+	/**table_data structure
+	 * [
+	 * 		{
+	 * 			cat_id: int
+	 * 			cat_name: string
+	 * 			cat_data: [int] length 7
+	 * 		}
+	 * 	 	{
+	 * 			cat_id: int
+	 * 			cat_name: string
+	 * 			cat_data: [int] length 7
+	 * 		}
+	 * ]
+	 */
 
 	constructor(props) {
 		super(props);
 		this.state = {
 			table_data: [],
-			didgetdata: false
+			data_recieved: false
 		};
 	}
 
-	fetchAPI() {
+	fetchAPI(API_path) {
 		console.log("fetchAPI called");
-		fetch('http://localhost:9000/userData/get').then((res) => {
-			return res.json();
-		}).then((myjson) => {
-			this.setState({
-				table_data: myjson.userdata
+		return new Promise((resolve, reject) => {
+			fetch('http://localhost:9000/' + API_path).then((response) => {
+				return response.json();
+			}).then((jsondata) => {
+				resolve(jsondata.userdata);
+			}).catch((error) => {
+				reject(error);
 			})
-		}).catch((err) => {
-			console.log(err);
 		});
 	}
 
-	postAPI() {
+	postAPI(API_path, data) {
 		console.log("postAPI called");
-		fetch('http://localhost:9000/userData/set', {
+		fetch('http://localhost:9000/' + API_path, {
 			method: "post",
 			headers: { 'Content-type': "application/json" },
-			body: JSON.stringify(this.state.table_data)
+			body: JSON.stringify(data)
 		}).then((res) => {
-			console.log(res);
+			//console.log(res);
 		}).catch((err) => {
 			console.log(err);
 		});
@@ -42,32 +56,18 @@ class Table extends React.Component {
 
 		console.log("componentDidMount called");
 
-		this.fetchAPI();
-
-		this.setState({
-			didgetdata: true
+		this.fetchAPI('userData/get').then((jsondata) => {
+			this.setState ({
+				table_data: jsondata,
+				data_recieved: true
+			});
+		}).catch((error) => {
+			console.log(error);
 		});
 	}
 
 	componentWillUnmount() {
-		this.postAPI();			
-	}
-
-	flip_table_data (target_id, target_day) {
-		let new_table_data;
-		new_table_data = this.state.table_data.map((catagory) => {
-			let {cat_id, cat_name, cat_data} = catagory;
-			if (cat_id == target_id) {
-				let new_catagory = catagory;
-				new_catagory.cat_data[target_day] = !cat_data[target_day];
-				return new_catagory;
-			} else {
-				return catagory;
-			}
-		});
-		this.setState({
-			table_data: new_table_data
-		});
+		this.postAPI('userData/set', this.state.table_data);
 	}
 
 	renderDate() {
@@ -77,32 +77,46 @@ class Table extends React.Component {
 
 		monday.setDate(today.getDate() - (today.getDay() - 1));
 
-		return (toString(monday.getFullYear) + '/' + (monday.getMonth() + 1) + '/' + monday.getDate());
+		return (monday.getFullYear() + '/' + (monday.getMonth() + 1) + '/' + monday.getDate());
 	}
 
 	renderTableData = () => {
-
-		return this.state.table_data.map((catagory) => {
+		return this.state.table_data.map((catagory, cat_index) => {
 			let {cat_id, cat_name, cat_data} = catagory;
-			return (
-				<tr key = {cat_id}>
-					
-					<td>{cat_name}</td>
-					
-					{catagory.cat_data.map((data, index = 0) => {
-						return (
-							<td>
-								<input
-									//className="gridbox"
-									type="checkbox"
-									checked={data}
-									onChange={() => {this.flip_table_data(cat_id, index++)}}
-								/>
-							</td>
-						);
-					})}
-				</tr>
+			let row = [];
+			row = cat_data.map((data, row_index) => {
+				return (
+					<label className="container" id={cat_index + '-' + row_index}>
+						<input
+							type="checkbox"
+							checked={data}
+							onChange={() => {
+								let new_table_data = this.state.table_data;
+								new_table_data[cat_index].cat_data[row_index] = !new_table_data[cat_index].cat_data[row_index];
+								this.setState({
+									table_data: new_table_data
+								});
+							}}
+						/>
+						<span className="checkmark"></span>
+					</label>
+				);
+			});
+			row.unshift(
+				<input
+					type="text"
+					id={cat_id}
+					value={cat_name}
+					onChange={(event) => {
+						let new_table_data = this.state.table_data;
+						new_table_data[cat_index].cat_name = event.target.value;
+						this.setState({
+							table_data: new_table_data
+						});
+					}}
+				/>
 			);
+			return row;
 		});
 	}
 
@@ -112,36 +126,26 @@ class Table extends React.Component {
 
 	render() {
 		console.log("render called");
-		if (this.state.didgetdata == true) {
-			this.postAPI();
+		if (this.state.data_recieved == true) {
+			this.postAPI('userData/set', this.state.table_data);
 		}
 		return(
-			<div className="grid-container">
-				
-				<table>
-					<thead>
-						<tr>
-							<td>
-								{this.renderDate()}
-							</td>
-							<td>Monday</td>
-							<td>Tuesday</td>
-							<td>Wednesday</td>
-							<td>Thursday</td>
-							<td>Friday</td>
-							<td>Saturday</td>
-							<td>Sunday</td>
-						</tr>
-					</thead>
-					<tbody>
-						{this.renderTableData()}
-					</tbody>
-				</table>
+			<div>
+				<h1>Your Weekly Agenda</h1>
+				<div className="grid-container">
+  					<h2>Week of: {this.renderDate()} </h2>
+					<div className="item1">Mon</div>
+					<div className="item2">Tues</div>
+					<div className="item3">Wed</div>  
+					<div className="item4">Thurs</div>
+					<div className="item5">Fri</div>
+					<div className="item6">Sat</div>
+					<div className="item7">Sun</div>
+					{this.renderTableData()}
+				</div>
 			</div>
 		);
 	}
-
-	
 }
 
 export default Table;

@@ -4,7 +4,7 @@ const Checkbox = (props) => {
             <input type="checkbox" />
             <span className="checkmark"></span>
         </label>
-    )
+    );
 }
 
 export default Checkbox;
