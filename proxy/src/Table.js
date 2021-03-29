@@ -1,5 +1,8 @@
 import React from 'react';
 
+
+//test comment
+
 class Table extends React.Component {
 
 
@@ -46,7 +49,7 @@ class Table extends React.Component {
 			headers: { 'Content-type': "application/json" },
 			body: JSON.stringify(data)
 		}).then((res) => {
-			//console.log(res);
+			
 		}).catch((err) => {
 			console.log(err);
 		});
