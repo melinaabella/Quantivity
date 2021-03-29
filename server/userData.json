@@ -2,12 +2,12 @@
     "userdata": [
         {
             "cat_id": 0,
-            "cat_name": "First Thing",
+            "cat_name": "Hello",
             "cat_data": [
+                false,
+                false,
                 true,
-                true,
-                true,
-                true,
+                false,
                 true,
                 true,
                 true
@@ -15,11 +15,11 @@
         },
         {
             "cat_id": 1,
-            "cat_name": "Second Thing",
+            "cat_name": "World",
             "cat_data": [
                 true,
-                true,
-                true,
+                false,
+                false,
                 true,
                 true,
                 true,

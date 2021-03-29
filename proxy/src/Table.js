@@ -84,15 +84,15 @@ class Table extends React.Component {
 		return this.state.table_data.map((catagory, cat_index) => {
 			let {cat_id, cat_name, cat_data} = catagory;
 			let row = [];
-			row = cat_data.map((data, row_index) => {
+			row = cat_data.map((data, col_index) => {
 				return (
-					<label className="container" id={cat_index + '-' + row_index}>
+					<label className="container" id={cat_index + '-' + col_index}>
 						<input
 							type="checkbox"
 							checked={data}
 							onChange={() => {
 								let new_table_data = this.state.table_data;
-								new_table_data[cat_index].cat_data[row_index] = !new_table_data[cat_index].cat_data[row_index];
+								new_table_data[cat_index].cat_data[col_index] = !new_table_data[cat_index].cat_data[col_index];
 								this.setState({
 									table_data: new_table_data
 								});

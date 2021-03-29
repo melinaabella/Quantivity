@@ -33,11 +33,9 @@ function App() {
   			<div className="item5">Fri</div>
 			<div className="item6">Sat</div>
   			<div className="item7">Sun</div>
-			<div>
  			<input type="text" id="task1" value={task1} onChange={taskInputHandler}/>
   
   				{row1}
-			</div>
 			<input type="text" id="task2" value={task2} onChange={taskInputHandler}/>
   
 				{row2}
