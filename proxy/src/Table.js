@@ -21,18 +21,20 @@ class Table extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			table_data: [],
+			table_data: {
+				user_data: []
+			},
 			data_recieved: false
 		};
 	}
 
 	fetchAPI(API_path) {
-		console.log("fetchAPI called");
+		//console.log("fetchAPI called");
 		return new Promise((resolve, reject) => {
 			fetch('http://localhost:9000/' + API_path).then((response) => {
 				return response.json();
 			}).then((jsondata) => {
-				resolve(jsondata.userdata);
+				resolve(jsondata);
 			}).catch((error) => {
 				reject(error);
 			})
@@ -40,7 +42,7 @@ class Table extends React.Component {
 	}
 
 	postAPI(API_path, data) {
-		console.log("postAPI called");
+		//console.log("postAPI called");
 		fetch('http://localhost:9000/' + API_path, {
 			method: "post",
 			headers: { 'Content-type': "application/json" },
@@ -54,9 +56,10 @@ class Table extends React.Component {
 
 	componentDidMount() {
 
-		console.log("componentDidMount called");
+		//console.log("componentDidMount called");
 
 		this.fetchAPI('userData/get').then((jsondata) => {
+			//console.log(jsondata);
 			this.setState ({
 				table_data: jsondata,
 				data_recieved: true
@@ -81,7 +84,8 @@ class Table extends React.Component {
 	}
 
 	renderTableData = () => {
-		return this.state.table_data.map((catagory, cat_index) => {
+		//console.log(this.state.table_data);
+		return this.state.table_data.user_data.map((catagory, cat_index) => {
 			let {cat_id, cat_name, cat_data} = catagory;
 			let row = [];
 			row = cat_data.map((data, col_index) => {
@@ -92,7 +96,7 @@ class Table extends React.Component {
 							checked={data}
 							onChange={() => {
 								let new_table_data = this.state.table_data;
-								new_table_data[cat_index].cat_data[col_index] = !new_table_data[cat_index].cat_data[col_index];
+								new_table_data.user_data[cat_index].cat_data[col_index] = !new_table_data.user_data[cat_index].cat_data[col_index];
 								this.setState({
 									table_data: new_table_data
 								});
@@ -109,7 +113,7 @@ class Table extends React.Component {
 					value={cat_name}
 					onChange={(event) => {
 						let new_table_data = this.state.table_data;
-						new_table_data[cat_index].cat_name = event.target.value;
+						new_table_data.user_data[cat_index].cat_name = event.target.value;
 						this.setState({
 							table_data: new_table_data
 						});
@@ -125,7 +129,7 @@ class Table extends React.Component {
 	}
 
 	render() {
-		console.log("render called");
+		//console.log("render called");
 		if (this.state.data_recieved == true) {
 			this.postAPI('userData/set', this.state.table_data);
 		}
@@ -134,13 +138,13 @@ class Table extends React.Component {
 				<h1>Your Weekly Agenda</h1>
 				<div className="grid-container">
   					<h2>Week of: {this.renderDate()} </h2>
-					<div className="item1">Mon</div>
-					<div className="item2">Tues</div>
-					<div className="item3">Wed</div>  
-					<div className="item4">Thurs</div>
-					<div className="item5">Fri</div>
-					<div className="item6">Sat</div>
-					<div className="item7">Sun</div>
+					<div className="item1">Sun</div>
+					<div className="item2">Mon</div>
+					<div className="item3">Tues</div>
+					<div className="item4">Wed</div>  
+					<div className="item5">Thurs</div>
+					<div className="item6">Fri</div>
+					<div className="item7">Sat</div>
 					{this.renderTableData()}
 				</div>
 			</div>
