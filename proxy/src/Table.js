@@ -80,6 +80,7 @@ class Table extends React.Component {
 		return (toString(monday.getFullYear) + '/' + (monday.getMonth() + 1) + '/' + monday.getDate());
 	}
 
+	//add styling
 	renderTableData = () => {
 
 		return this.state.table_data.map((catagory) => {
@@ -109,7 +110,7 @@ class Table extends React.Component {
 	componentDidUpdate() {
 
 	}
-
+//add CSS styling inside render function 
 	render() {
 		console.log("render called");
 		if (this.state.didgetdata == true) {
@@ -118,7 +119,7 @@ class Table extends React.Component {
 		return(
 			<div className="grid-container">
 				
-				<table>
+				<table className="table-styling">
 					<thead>
 						<tr>
 							<td>
