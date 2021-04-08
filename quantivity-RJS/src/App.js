@@ -1,156 +1,47 @@
-import './App.css';
-import Checkbox from './components/Checkbox'
-import { useState } from 'react';
+import React, { useState } from "react";
+import homepage from "./homepage";
+import Loginform from './components/Loginform';
+import quansheet from './quansheet';
+import projectwebsite from './projectwebsite';
+import { Route, Link } from 'react-router-dom';
+import NavBar from "./components/NavBar";
+
 
 function App() {
-  const [task1, setTask1] = useState("");
-  const [task2, setTask2] = useState("sunny");
-
-  const taskInputHandler = (event) => {
-    setTask1(event.target.value);
-    console.log(event.target.id);
+  const memberUser = {
+    email: "member@quantivity.com",
+    password: "sunshine123"
   }
 
-  let row1 = [];
-  let row2 = [];
-  
-  for(let i=1; i<8; i++){
-    row1.push(<Checkbox col={i} />);
-	row2.push(<Checkbox col={i} />);
-  }
+    const [user, setUser] = useState({name: "", email: ""});
+    const [error, setError] = useState("");
+
+    const loggedin = details => {
+      console.log(details);
+    }
+
+    const loggedout = () => {
+      console.log(loggedout);
+    }
 
   return (
-    <div>
-
-		<h1>Your Weekly Agenda</h1>
-
-		<div className="grid-container">
-  			<h2>Week of: 3/22/21</h2>
-  			<div className="item1">Mon</div>
-  			<div className="item2">Tues</div>
-  			<div className="item3">Wed</div>  
-  			<div className="item4">Thurs</div>
-  			<div className="item5">Fri</div>
-			<div className="item6">Sat</div>
-  			<div className="item7">Sun</div>
- 			<input type="text" id="task1" value={task1} onChange={taskInputHandler}/>
-  
-  				{row1}
-			<input type="text" id="task2" value={task2} onChange={taskInputHandler}/>
-  
-				{row2}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<input type="text" id="myText" value=""/>
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>
-  
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>
-  
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>
-  
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>
-  
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>
-  
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>  
-  
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>
-  
-<input type="text" id="myText" value=""/>
-  
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>
-  
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>
-  
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>
-  
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>
-  
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>
-  
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>  
-  
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>
-  
-<input type="text" id="myText" value=""/>
-  
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>
-  
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>
-  
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>
-  
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>
-  
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>
-  
-<label className="container"><input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>  
-  
-<label className="container">
-  <input type="checkbox"/>
-  <span className="checkmark"></span>
-</label>
-  
-</div>
-
-    </div>
-  
+    <div className="App">
+    {(user.email != "" ? (
+      <div className="welcome">
+        <h2>Welcome, <span>{user.name}</span></h2>
+        <button>logout</button>
+        </div>
+    ) : (
+      <Loginform loggedin={loggedin} error={error} />
+    )
+    
+    )}
+    <NavBar />
+    <Route exact path="/" component ={homepage} />
+    <Route exact path="/Loginform" component ={Loginform} /> 
+    <Route exact path="/quansheet" component ={quansheet} /> 
+    <Route exact path="/projectwebsite" component ={projectwebsite} /> 
+  </div>
   );
 }
 

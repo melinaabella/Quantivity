@@ -145,3 +145,20 @@ input[type=text] {
   font-size: 30px;
   text-align: center;
 }
+
+homepage{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background: rgba(255, 255, 255, 0.8);
+  color: white;
+}
+
+.homepage-links{
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}

@@ -83,6 +83,7 @@ class Table extends React.Component {
 		return (monday.getFullYear() + '/' + (monday.getMonth() + 1) + '/' + monday.getDate());
 	}
 
+	//add styling
 	renderTableData = () => {
 		//console.log(this.state.table_data);
 		return this.state.table_data.user_data.map((catagory, cat_index) => {
@@ -127,7 +128,7 @@ class Table extends React.Component {
 	componentDidUpdate() {
 
 	}
-
+//add CSS styling inside render function 
 	render() {
 		//console.log("render called");
 		if (this.state.data_recieved == true) {
