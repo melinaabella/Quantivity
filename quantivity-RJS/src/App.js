@@ -8,31 +8,31 @@ import NavBar from "./components/NavBar";
 
 
 function App() {
-  const memberUser = {
-    email: "member@quantivity.com",
-    password: "sunshine123"
-  }
+  	const memberUser = {
+    	email: "member@quantivity.com",
+    	password: "sunshine123"
+  	};
 
     const [user, setUser] = useState({name: "", email: ""});
     const [error, setError] = useState("");
 
     const loggedin = details => {
-      console.log(details);
-    }
+	    console.log(details);
+    };
 
     const loggedout = () => {
-      console.log(loggedout);
-    }
+    	console.log(loggedout);
+    };
 
-  return (
-    <div className="App">
-    <NavBar />
-    <Route exact path="/" component ={homepage} />
-    <Route exact path="/Login" component ={Login} /> 
-    <Route exact path="/quansheet" component ={quansheet} /> 
-    <Route exact path="/projectwebsite" component ={projectwebsite} /> 
-  </div>
-  );
+  	return (
+    	<div className="App">
+    		<NavBar/>
+    		<Route exact path="/" component ={homepage} />
+    		<Route exact path="/Login" component ={Login} /> 
+    		<Route exact path="/quansheet" component ={quansheet} /> 
+    		<Route exact path="/projectwebsite" component ={projectwebsite} /> 
+  		</div>
+  	);
 }
 
 export default App;
