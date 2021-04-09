@@ -8,7 +8,7 @@ function NavBar(){
                 <Link to="/">homepage</Link>
             </li>
             <li>
-                <Link to="/Loginform">Loginform</Link>
+                <Link to="/Login">Login</Link>
             </li>
             <li>
                 <Link to="/quansheet">quansheet</Link>

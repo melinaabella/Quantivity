@@ -1,7 +1,5 @@
 import React from 'react';
 import './App.css';
-import Checkbox from './components/Checkbox';
-import { useState } from 'react';
 import { motion } from "framer-motion";
 
 function quansheet() {
