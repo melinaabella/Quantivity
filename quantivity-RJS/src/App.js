@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import homepage from "./homepage";
-import Loginform from './components/Loginform';
+import Login from './Login';
 import quansheet from './quansheet';
 import projectwebsite from './projectwebsite';
 import { Route, Link } from 'react-router-dom';
@@ -26,19 +26,9 @@ function App() {
 
   return (
     <div className="App">
-    {(user.email != "" ? (
-      <div className="welcome">
-        <h2>Welcome, <span>{user.name}</span></h2>
-        <button>logout</button>
-        </div>
-    ) : (
-      <Loginform loggedin={loggedin} error={error} />
-    )
-    
-    )}
     <NavBar />
     <Route exact path="/" component ={homepage} />
-    <Route exact path="/Loginform" component ={Loginform} /> 
+    <Route exact path="/Login" component ={Login} /> 
     <Route exact path="/quansheet" component ={quansheet} /> 
     <Route exact path="/projectwebsite" component ={projectwebsite} /> 
   </div>
