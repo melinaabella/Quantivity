@@ -29,7 +29,7 @@ router.post('/set', (req, res, next) => {
 	})*/
 
 	let obj = req.body;
-	database.get().db('quantivitydb').collection('test_collection').updateOne({week: 20210404}, {$set : {week: req.body.week, user_data: req.body.user_data}}, {upsert: true}).then((result) => {
+	database.get().db('quantivitydb').collection('test_collection').updateOne({week: 20210404}, {$set : {week: req.body.week, catagories: req.body.catagories}}, {upsert: true}).then((result) => {
 		res.sendStatus(200);
 	}).catch((error) => {
 		res.sendStatus(500);

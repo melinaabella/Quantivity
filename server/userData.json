@@ -1,10 +1,10 @@
 {
 	"week": 20210404,
-    "user_data": [
+    "catagories": [
         {
-            "cat_id": 0,
-            "cat_name": "Hello",
-            "cat_data": [
+            "id": 0,
+            "name": "Hello",
+            "data": [
                 false,
                 false,
                 true,
@@ -15,9 +15,9 @@
             ]
         },
         {
-            "cat_id": 1,
-            "cat_name": "World",
-            "cat_data": [
+            "id": 1,
+            "name": "World",
+            "data": [
                 true,
                 false,
                 false,
@@ -28,9 +28,9 @@
             ]
         },
         {
-            "cat_id": 2,
-            "cat_name": "Hello",
-            "cat_data": [
+            "id": 2,
+            "name": "Hello",
+            "data": [
                 true,
                 true,
                 true,
@@ -41,9 +41,9 @@
             ]
         },
         {
-            "cat_id": 3,
-            "cat_name": "Fourth Thing",
-            "cat_data": [
+            "id": 3,
+            "name": "Fourth Thing",
+            "data": [
                 true,
                 true,
                 true,
@@ -54,9 +54,9 @@
             ]
         },
         {
-            "cat_id": 4,
-            "cat_name": "Fifth Thing",
-            "cat_data": [
+            "id": 4,
+            "name": "Fifth Thing",
+            "data": [
                 true,
                 true,
                 true,
@@ -67,9 +67,9 @@
             ]
         },
         {
-            "cat_id": 5,
-            "cat_name": "Sixth Thing",
-            "cat_data": [
+            "id": 5,
+            "name": "Sixth Thing",
+            "data": [
                 true,
                 true,
                 true,

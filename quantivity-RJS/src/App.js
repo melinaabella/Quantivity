@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import homepage from "./homepage";
 import Login from './Login';
-import quansheet from './quansheet';
+import Quansheet from './components/Quansheet';
 import projectwebsite from './projectwebsite';
 import { Route, Link } from 'react-router-dom';
 import NavBar from "./components/NavBar";
@@ -29,7 +29,7 @@ function App() {
     		<NavBar/>
     		<Route exact path="/" component ={homepage} />
     		<Route exact path="/Login" component ={Login} /> 
-    		<Route exact path="/quansheet" component ={quansheet} /> 
+    		<Route exact path="/quansheet" component ={Quansheet} /> 
     		<Route exact path="/projectwebsite" component ={projectwebsite} /> 
   		</div>
   	);

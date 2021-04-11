@@ -10,9 +10,9 @@ exports.connect = () => {
 	return new Promise((resolve, reject) => {
 		MongoClient.connect(url).then((database) => {
 			state.db = database;
-			resolve(database);
-			//return state.db.db('quantivitydb').collection('test_collection').deleteMany({});
-		})/*.then(() => {
+			//resolve(database);
+			return state.db.db('quantivitydb').collection('test_collection').deleteMany({});
+		}).then(() => {
 			return fs.readFile(__dirname + '/../userData.json');
 		}).then((contents) => {
 			let obj = (JSON.parse(contents));
@@ -22,7 +22,7 @@ exports.connect = () => {
 			console.log("Database insertion successfull");
 			console.log(result);
 			resolve(state.db);
-		})*/.catch((error) => {
+		}).catch((error) => {
 			reject(error);
 		});
 	});
