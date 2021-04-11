@@ -9,20 +9,19 @@ function Quansheet() {
 
 
 	useEffect(() => {
-		console.log('useEffect called!');
 		if (data_recieved) {
-			//server.postAPI('userData/set', {week: week, catagories: catagories});
+			server.postAPI('userData/set', {week: week, catagories: catagories});
 		} else {
 			server.fetchAPI('userData/get').then((response) => {
+				set_data_recieved(true);
 				set_week(response.week);
 				set_catagories(response.catagories);
-				set_data_recieved(true);
 			}).catch((error) => {
 				console.log(error);
 			});
 		}
 		return (() => {
-			//server.postAPI('userData/set', {week: week, catagories: catagories});
+			server.postAPI('userData/set', {week: week, catagories: catagories});
 		});
 	});
     
@@ -47,7 +46,7 @@ function Quansheet() {
 						<>
 							<input type="text" id={catagory.id} value={catagory.name} onChange={(event) => {
 								console.log('input box ' + index + ' has experienced an onChange event!');
-								let new_catagories = catagories;
+								let new_catagories = [...catagories];
 								new_catagories[index].name = event.target.value;
 								set_catagories(new_catagories);
 							}}/>
@@ -55,8 +54,7 @@ function Quansheet() {
 								return (
 									<label className="container" id={index + '-' + jndex}>
 										<input type="checkbox" checked={check} onChange={() => {
-											console.log('check box ' + index + ':' + jndex + ' has experienced an onChange event!');
-											let new_catagories = catagories;
+											let new_catagories = [...catagories];
 											new_catagories[index].data[jndex] = !new_catagories[index].data[jndex];
 											set_catagories(new_catagories);
 										}}/>
