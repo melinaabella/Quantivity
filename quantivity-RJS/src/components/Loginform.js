@@ -7,6 +7,7 @@ function Loginform({ loggedin, error}){
 	const submitHandler = e => {
 		e.preventDefault();
 		loggedin(details);
+
 	}
 
 
