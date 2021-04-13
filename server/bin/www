@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('server:server');
 var http = require('http');
+var database = require('./db');
 
 /**
  * Get port from environment and store in Express.
@@ -24,10 +25,14 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+database.connect().then(() => {
+	console.log('Database connected!');
+	server.listen(port);
+	server.on('error', onError);
+	server.on('listening', onListening);
+}).catch((error) => {
+	console.log(error);
+});
 
 /**
  * Normalize a port into a number, string, or false.
