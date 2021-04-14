@@ -5,16 +5,6 @@ const server = require('../server_comm');
 
 const days_of_the_week = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 
-/*
-				<motion.div className="item1" initial={{opacity:0}} animate={{opacity:1}} transition={{duration:3}}>Sun</motion.div>
-				<motion.div className="item2" initial={{opacity:0}} animate={{opacity:1}} transition={{duration:3}}>Mon</motion.div>
-				<motion.div className="item3" initial={{opacity:0}} animate={{opacity:1}} transition={{duration:3}}>Tue</motion.div>
-				<motion.div className="item4" initial={{opacity:0}} animate={{opacity:1}} transition={{duration:3}}>Wed</motion.div>
-				<motion.div className="item5" initial={{opacity:0}} animate={{opacity:1}} transition={{duration:3}}>Thu</motion.div>
-				<motion.div className="item6" initial={{opacity:0}} animate={{opacity:1}} transition={{duration:3}}>Fri</motion.div>
-				<motion.div className="item7" initial={{opacity:0}} animate={{opacity:1}} transition={{duration:3}}>Sat</motion.div>
-*/
-
 function Quansheet() {
 	const [week, set_week] = useState('');
 	const [catagories, set_catagories] = useState([]);

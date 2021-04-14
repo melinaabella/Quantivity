@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import homepage from "./homepage";
-import Login from './Login';
+import Login from './components/Login';
 import Quansheet from './components/Quansheet';
-import projectwebsite from './projectwebsite';
+import projectwebsite from './components/projectwebsite';
 import { Route, Link } from 'react-router-dom';
 import NavBar from "./components/NavBar";
 
@@ -31,6 +31,7 @@ function App() {
     		<Route exact path="/Login" component ={Login} /> 
     		<Route exact path="/quansheet" component ={Quansheet} /> 
     		<Route exact path="/projectwebsite" component ={projectwebsite} /> 
+			<Route exact path="/createAccountForm" component ={CreateAccount} />
   		</div>
   	);
 }

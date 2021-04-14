@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router';
-import './App.css';
-import Loginform from './components/Loginform';
+import '../App.css';
+import Loginform from './Loginform';
 
 
 function Login (){
@@ -37,8 +37,12 @@ function Login (){
 		setUser({ name: "", email: ""});
 	}
 
+	const createAccount = () => {
+
+	}
+
 	if (redirect == true) {
-		return <Redirect to="/quansheet"/>
+		return <Redirect to="/Quansheet"/>
 	} else {
 		return (
 				
