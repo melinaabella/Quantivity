@@ -21,6 +21,7 @@ input, button{
   background: linear-gradient(180deg, rgba(87,153,182,1) 0%, rgba(145,187,209,1) 0%, rgba(255,247,187,1) 100%)
 }
 
+
 form: {
   display: block;
   position: relative;

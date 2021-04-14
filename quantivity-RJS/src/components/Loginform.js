@@ -42,7 +42,10 @@ function Loginform({ loggedin, error}){
 						}}/>
 					</div>
 					<input type ="submit" value="Login" />
+					<div className="create-account">
 					<button onClick={createAccount}>Create Account</button>
+					</div>
+					
 				</div>
 			</form>
 		);
