@@ -10,8 +10,8 @@ exports.connect = () => {
 	return new Promise((resolve, reject) => {
 		MongoClient.connect(url).then((database) => {
 			state.db = database;
-			//resolve(database);
-			return state.db.db('quantivitydb').collection('test_collection').deleteMany({});
+			resolve(database);
+			//return state.db.db('quantivitydb').collection('test_collection').deleteMany({});
 		}).then(() => {
 			return fs.readFile(__dirname + '/../userData.json');
 		}).then((contents) => {

@@ -12,7 +12,7 @@ function Quansheet() {
 
 	useEffect(() => {
 		if (data_recieved) {
-			//server.postAPI('userData/set', {week: week, catagories: catagories});
+			server.postAPI('userData/set', {week: week, catagories: catagories});
 		} else {
 			server.fetchAPI('userData/get').then((response) => {
 				console.log(response);
@@ -24,7 +24,7 @@ function Quansheet() {
 			});
 		}
 		return (() => {
-			//server.postAPI('userData/set', {week: week, catagories: catagories});
+			server.postAPI('userData/set', {week: week, catagories: catagories});
 		});
 	});
     
@@ -42,7 +42,7 @@ function Quansheet() {
 				{catagories.map((catagory, index) => {
 					return(
 						<>
-							<input type="text" id={catagory.id} value={catagory.name} onChange={(event) => {
+							<input type="text" id={catagory.id} placeholder="Enter Task" value={catagory.value} onChange={(event) => {
 								console.log('input box ' + index + ' has experienced an onChange event!');
 								let new_catagories = [...catagories];
 								new_catagories[index].name = event.target.value;
