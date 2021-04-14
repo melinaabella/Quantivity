@@ -15,6 +15,7 @@ function Quansheet() {
 			server.postAPI('userData/set', {week: week, catagories: catagories});
 		} else {
 			server.fetchAPI('userData/get').then((response) => {
+				console.log(response);
 				set_data_recieved(true);
 				set_week(response.week);
 				set_catagories(response.catagories);

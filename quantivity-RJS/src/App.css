@@ -146,16 +146,17 @@ input[type=text] {
   text-align: center;
 }
 
-homepage{
+Homepage{
   display: flex;
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
   background: rgba(255, 255, 255, 0.8);
   color: white;
+  justify-content: center;
 }
 
-.homepage-links{
+.Homepage-links{
   width: 50%;
   display: flex;
   justify-content: space-around;
