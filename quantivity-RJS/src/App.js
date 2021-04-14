@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import homepage from "./Homepage";
+import Homepage from "./Homepage";
 import Login from './components/Login';
 import Quansheet from './components/Quansheet';
 import projectwebsite from './components/projectwebsite';
+import CreateAccountForm from './components/CreateAccountForm';
 import { Route, Link } from 'react-router-dom';
 import NavBar from "./components/NavBar";
 
@@ -31,7 +32,7 @@ function App() {
     		<Route exact path="/Login" component ={Login} /> 
     		<Route exact path="/quansheet" component ={Quansheet} /> 
     		<Route exact path="/projectwebsite" component ={projectwebsite} /> 
-			<Route exact path="/createAccountForm" component ={CreateAccount} />
+			<Route exact path="/createAccountForm" component ={CreateAccountForm} />
   		</div>
   	);
 }
