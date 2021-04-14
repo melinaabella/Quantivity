@@ -4,80 +4,80 @@
     "catagories": [
         {
             "id": 0,
-            "name": "Hello",
+            "name": "",
             "data": [
                 false,
                 false,
-                true,
                 false,
-                true,
-                true,
-                true
+                false,
+                false,
+                false,
+                false
             ]
         },
         {
             "id": 1,
-            "name": "World",
+            "name": "",
             "data": [
-                true,
                 false,
                 false,
-                true,
-                true,
-                true,
-                true
+                false,
+                false,
+                false,
+                false,
+                false
             ]
         },
         {
             "id": 2,
-            "name": "Hello",
+            "name": "",
             "data": [
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
                 false
             ]
         },
         {
             "id": 3,
-            "name": "Fourth Thing",
+            "name": "",
             "data": [
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
                 false
             ]
         },
         {
             "id": 4,
-            "name": "Fifth Thing",
+            "name": "",
             "data": [
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
             ]
         },
         {
             "id": 5,
-            "name": "Sixth Thing",
+            "name": "",
             "data": [
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
             ]
         }
     ]
