@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import homepage from "./homepage";
+import Homepage from "./Homepage";
 import Login from './Login';
 import Quansheet from './components/Quansheet';
 import projectwebsite from './projectwebsite';
@@ -27,7 +27,7 @@ function App() {
   	return (
     	<div className="App">
     		<NavBar/>
-    		<Route exact path="/" component ={homepage} />
+    		<Route exact path="/" component ={Homepage} />
     		<Route exact path="/Login" component ={Login} /> 
     		<Route exact path="/quansheet" component ={Quansheet} /> 
     		<Route exact path="/projectwebsite" component ={projectwebsite} /> 
