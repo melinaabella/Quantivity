@@ -4,6 +4,7 @@
   grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px; 
   grid-gap: 50px;
   padding: 50px;
+  text-align: center;
   justify-content: center;
 }
 
@@ -162,4 +163,9 @@ Homepage{
   justify-content: space-around;
   align-items: center;
   list-style: none;
+}
+
+.react-player-media{
+  text-align: center;
+  justify-content: center;
 }
