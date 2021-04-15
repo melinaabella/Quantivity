@@ -16,7 +16,7 @@ function Loginform({ loggedin, error}){
 	}
 
 	if (createAccountRedirect) {
-		<Redirect to="/createAccountForm"/>
+		<Redirect to="/CreateAccountForm"/>
 	} else {
 		return (
 			<form onSubmit={submitHandler}>

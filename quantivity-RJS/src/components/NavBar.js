@@ -5,16 +5,19 @@ function NavBar(){
     return(
         <ul>
             <li>
-                <Link to="/">homepage</Link>
+                <Link to="/">Homepage</Link>
             </li>
             <li>
                 <Link to="/Login">Login</Link>
             </li>
             <li>
-                <Link to="/quansheet">quansheet</Link>
+                <Link to="/CreateAccountForm">Create Account</Link>
             </li>
             <li>
                 <Link to="/projectwebsite">projectwebsite</Link>
+            </li>
+            <li>
+                <Link to="/quansheet"></Link>
             </li>
 
         </ul>

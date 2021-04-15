@@ -16,6 +16,7 @@ function App() {
 
     const [user, setUser] = useState({name: "", email: ""});
     const [error, setError] = useState("");
+	
 
     const loggedin = details => {
 	    console.log(details);
@@ -29,10 +30,10 @@ function App() {
     	<div className="App">
     		<NavBar/>
     		<Route exact path="/" component ={Homepage} />
+			<Route exact path="/CreateAccountForm" component ={CreateAccountForm} /> 
     		<Route exact path="/Login" component ={Login} /> 
-    		<Route exact path="/quansheet" component ={Quansheet} /> 
     		<Route exact path="/projectwebsite" component ={projectwebsite} /> 
-			<Route exact path="/createAccountForm" component ={CreateAccountForm} />
+			<Route exact path="/quansheet" component ={Quansheet} /> 
   		</div>
   	);
 }
