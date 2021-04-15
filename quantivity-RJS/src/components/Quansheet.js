@@ -33,7 +33,7 @@ function Quansheet() {
   			<motion.h1 initial={{opacity:0}} animate={{opacity:1}} transition={{duration:2}}> Your Weekly Agenda</motion.h1>
   
   			<div className="grid-container">
-				<h2>Week of: 4/2/21</h2>
+				<h2>Week of: 4/11/21</h2>
 				
 				{days_of_the_week.map((day) => {
 					return <motion.div className="item1" initial={{opacity:0}} animate={{opacity:1}} transition={{duration:3}}>{day}</motion.div>
