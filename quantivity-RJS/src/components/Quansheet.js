@@ -12,7 +12,11 @@ function Quansheet() {
 
 	useEffect(() => {
 		if (data_recieved) {
-			server.postAPI('userData/set', {week: week, catagories: catagories});
+			server.postAPI('userData/set', {week: week, catagories: catagories}).then((res) => {
+				
+			}).catch((error) => {
+				console.log(error);
+			});
 		} else {
 			server.fetchAPI('userData/get').then((response) => {
 				console.log(response);

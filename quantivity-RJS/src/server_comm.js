@@ -16,13 +16,16 @@ exports.fetchAPI = (API_path) => {
 
 exports.postAPI = (API_path, data) => {
 	//console.log("postAPI called");
-	fetch(server_path + API_path, {
-		method: "post",
-		headers: { 'Content-type': "application/json" },
-		body: JSON.stringify(data)
-	}).then((res) => {
-		//console.log(res);
-	}).catch((err) => {
-		console.log(err);
+	return new Promise((resolve, reject) => {
+		fetch(server_path + API_path, {
+			method: "post",
+			headers: { 'Content-type': "application/json" },
+			body: JSON.stringify(data)
+		}).then((res) => {
+			resolve(res);
+		}).catch((err) => {
+			reject(err);
+		});
 	});
+	
 }
