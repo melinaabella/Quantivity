@@ -16,7 +16,7 @@ function CreateAccountForm() {
 		});
 	});
 	
-	handle_form_submit = (event) => {
+	const handle_form_submit = (event) => {
 		//check if password is valid
 		if (form_details.password_1 === form_details.password_2) {
 			set_form_error('');
