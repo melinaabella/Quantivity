@@ -1,12 +1,35 @@
 const url = "mongodb://localhost:27017/quantivitydb";
 const MongoClient = require('mongodb').MongoClient;
 const fs = require('fs/promises');
+const mongoose = require('mongoose');
 
-var state ={
+//database connection
+var state = {
 	db: null
-}
+};
+
+//schemas
+var schemas = {
+	userSchema: null
+};
+
+var models = {
+	User: null
+};
 
 exports.connect = () => {
+	return new Promise((resolve, reject) => {
+		mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
+			state.db = mongoose.connection;
+			defineSchemas();
+			compileModels();
+			resolve(state.db);
+		}).catch((error) => {
+			reject(error);
+		});
+
+	});
+
 	return new Promise((resolve, reject) => {
 		MongoClient.connect(url).then((database) => {
 			state.db = database;
@@ -28,11 +51,11 @@ exports.connect = () => {
 	});
 }
 
-exports.get = () => {
+exports.getdb = () => {
 	return state.db;
 }
 
-exports.close = () => {
+exports.closedb = () => {
 	if (state.db) {
 		return new Promise((resolve, reject) => {
 			state.db.close().then(() => {
@@ -40,7 +63,24 @@ exports.close = () => {
 				resolve();
 			}).catch((error) => {
 				reject(error);
-			})
+			});
 		});
 	}
+}
+
+exports.getModels = () => {
+	return models;
+}
+
+function defineSchemas() {
+	schemas.userSchema =  mongoose.Schema({
+		id: Number,
+		name: String,
+		email: String,
+		password: String
+	});
+}
+
+function compileModels() {
+	models.User = mongoose.model('User', schemas.userSchema);
 }

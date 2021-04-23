@@ -6,7 +6,7 @@ const fs = require('fs/promises');
 const database = require('../bin/db');
 
 router.get('/get', (req, res, next) => {
-	database.get().db('quantivitydb').collection('test_collection').findOne({week: 20210404}).then((db_result) => {
+	database.getdb().db('quantivitydb').collection('test_collection').findOne({week: 20210404}).then((db_result) => {
 		console.log(db_result);
 		return res.json(db_result);
 	}).catch((error) => {
@@ -29,7 +29,7 @@ router.post('/set', (req, res, next) => {
 	})*/
 
 	let obj = req.body;
-	database.get().db('quantivitydb').collection('test_collection').updateOne({week: 20210404}, {$set : {week: req.body.week, catagories: req.body.catagories}}, {upsert: true}).then((result) => {
+	database.getdb().db('quantivitydb').collection('test_collection').updateOne({week: 20210404}, {$set : {week: req.body.week, catagories: req.body.catagories}}, {upsert: true}).then((result) => {
 		res.sendStatus(200);
 	}).catch((error) => {
 		res.sendStatus(500);

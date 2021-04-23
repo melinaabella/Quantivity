@@ -15,7 +15,7 @@ exports.fetchAPI = (API_path) => {
 }
 
 exports.postAPI = (API_path, data) => {
-	//console.log("postAPI called");
+	console.log("postAPI called");
 	return new Promise((resolve, reject) => {
 		fetch(server_path + API_path, {
 			method: "post",

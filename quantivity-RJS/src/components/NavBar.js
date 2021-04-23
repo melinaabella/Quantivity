@@ -11,7 +11,7 @@ function NavBar(){
                 <Link to="/Login">Login</Link>
             </li>
             <li>
-                <Link to="/CreateAccountForm">Create Account</Link>
+                <Link to="/CreateAccount">Create Account</Link>
             </li>
             <li>
                 <Link to="/projectwebsite">projectwebsite</Link>
