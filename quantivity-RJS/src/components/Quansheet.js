@@ -13,7 +13,7 @@ function Quansheet() {
 
 	useEffect(() => {
 		if (data_recieved) {
-			server.postAPI('userData/set/' + user + '/' + renderDate(date), {week: renderDate(date), categories: categories}).catch((error) => {
+			server.postAPI('userData/set/' + user + '/' + renderDate(date), {user: user, week: renderDate(date), categories: categories}).catch((error) => {
 				console.log(error);
 			});
 		} else {
@@ -58,6 +58,7 @@ function Quansheet() {
 					last_week.setDate(last_week.getDate() - 7);
 					console.log(last_week);
 					set_date(new Date(last_week));
+					set_categories([]);
 					set_data_recieved(false);
 				}}>&lt;</button>
 				<h2>Week of: {renderDate(date)}</h2>
@@ -72,6 +73,7 @@ function Quansheet() {
 					next_week.setDate(next_week.getDate() + 7);
 					console.log(next_week)
 					set_date(new Date(next_week));
+					set_categories([]);
 					set_data_recieved(false);
 				}}>&gt;</button>
 				
