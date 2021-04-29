@@ -8,19 +8,12 @@ const database = require('../bin/db');
 router.get('/get/:user_id/:week', (req, res, next) => {
 	let Users = database.getModels().User;
 	let Grids = database.getModels().Grid;
-	Users.find({email: req.params.user_id}).then(() => {
+	Users.findOne({email: req.params.user_id}).then((user) => {
 		console.log("quering database: {user: " + req.params.user_id + ", week: " + req.params.week + "}");
-		Grids.find({user: req.params.user_id, week: req.params.week}).then((results) => {
-			console.log("database results: " + results);
-			if (results.length > 0) {
-				res.json(results[0]);
-			} else {
-				res.sendStatus(404);
-			}
-		}).catch((e) => {
-			console.log(e);
-			res.sendStatus(500);
-		})
+		return Grids.findOne({user: req.params.user_id, week: req.params.week});
+	}).then((grid) => {
+		console.log("database results: " + grid);
+		res.json(grid);
 	}).catch((error) => {
 		console.log(error);
 		res.sendStatus(404);
@@ -30,7 +23,22 @@ router.get('/get/:user_id/:week', (req, res, next) => {
 router.post('/set/:user_id/:week', (req, res, next) => {
 	let Users = database.getModels().User;
 	let Grids = database.getModels().Grid;
-	Grids.findOneAndUpdate({user: req.params.user_id, week: req.params.week}, {...req.body}).then(() => {
+
+	Users.findOne({email: req.params.user_id}).then((user) => {
+		return Grids.findOne({user: req.params.user_id, week: req.params.week});
+	}).then((grid) => {
+		grid = {...req.body};
+		grid = new (database.getModels()).Grid(grid);
+		return grid.save();
+	}).then(() => {
+		res.sendStatus(200);
+	}).catch((error) => {
+		console.log(error);
+		res.sendStatus(500);
+	})
+
+
+/*	Grids.findOneAndUpdate({user: req.params.user_id, week: req.params.week}, {...req.body}).then(() => {
 		res.sendStatus(200);
 	}).catch(() => {
 		console.log(error);
