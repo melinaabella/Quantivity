@@ -10,11 +10,13 @@ var state = {
 
 //schemas
 var schemas = {
-	userSchema: null
+	userSchema: null,
+	gridSchema: null
 };
 
 var models = {
-	User: null
+	User: null,
+	Grid: null
 };
 
 exports.connect = () => {
@@ -79,8 +81,14 @@ function defineSchemas() {
 		email: String,
 		password: String
 	});
+	schemas.gridSchema = mongoose.Schema({
+		user: String,
+		week: String,
+		categories: Array
+	})
 }
 
 function compileModels() {
 	models.User = mongoose.model('User', schemas.userSchema);
+	models.Grid = mongoose.model('Grid', schemas.gridSchema);
 }

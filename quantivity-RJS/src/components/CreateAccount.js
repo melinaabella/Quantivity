@@ -10,8 +10,6 @@ function CreateAccount() {
 	const [createAccountSuccessful, set_createAccountSuccessful] = useState(false);
 
 	const sendNewAccount = (form_details) => {
-
-
 		if (form_details.password_1 === form_details.password_2) {
 			set_form_error('');
 			//password hashing?
@@ -22,7 +20,7 @@ function CreateAccount() {
 				password: form_details.password_1
 			};
 			console.log("contacting server");
-			server.postAPI('users/' + form_details.email, form_data).then((response) => {
+			server.postAPI('users/create/' + form_details.email, form_data).then((response) => {
 				console.log(response);
 				if (response.status === 205) {
 					set_form_error('Account already exists!');
@@ -39,13 +37,6 @@ function CreateAccount() {
 			set_form_error("Passwords do not match!");
 		}
 	}
-
-	useEffect(() => {
-
-		return (() => {
-
-		});
-	})
 
 	return (
 		<>

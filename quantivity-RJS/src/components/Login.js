@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router';
 import '../App.css';
 import Loginform from './Loginform';
+const server = require('../server_comm');
 
 
 function Login (){
@@ -18,27 +19,26 @@ function Login (){
 	const loggedin = details => {
 		console.log(details);
 
-		if (details.email == memberUser.email && details.password == memberUser.password) {
-			console.log("Logged in");
-			setUser({
-				name: details.name,
-				email: details.email
-			});
-			setRedirect(true);
-		} else {
-			console.log("Details do not match");
-			setError("Details do not match");
-		}
+		server.fetchAPI('users/login/' + details.email).then((result) => {
+			if (details.email == result.email && details.password == result.password) {
+				console.log("Logged in");
+				setUser({
+					name: details.name,
+					email: details.email
+				});
+				setRedirect(true);
+			} else {
+				setError("Details do not match");
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
 	}
 
 
 	//log out button 
 	const loggedout = () => {
 		setUser({ name: "", email: ""});
-	}
-
-	const createAccount = () => {
-
 	}
 
 	if (redirect == true) {

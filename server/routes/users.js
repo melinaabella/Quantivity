@@ -1,3 +1,4 @@
+const { response } = require('express');
 var express = require('express');
 var router = express.Router();
 var database = require('../bin/db');
@@ -7,13 +8,23 @@ router.get('/', function(req, res, next) {
 
 });
 
-//view account
-router.get('/:user_id', (req, res, next) => {
-
+//login account
+router.get('/login/:user_id', (req, res, next) => {
+	console.log("recieved log in request");
+	if (req.body != null) {
+		database.getModels().User.find({email: req.params.user_id}).then((results) => {
+			console.log(results);
+			if (results.length < 1) {
+				res.sendStatus(404);
+			} else {
+				res.json(results[0]);
+			}
+		})
+	}
 });
 
 //account creation
-router.post('/:user_id', (req, res, next) => {
+router.post('/create/:user_id', (req, res, next) => {
 	//req has form data in it
 	if (req.body != null) {
 		let models = database.getModels();
@@ -37,14 +48,14 @@ router.post('/:user_id', (req, res, next) => {
 	} else {
 		res.sendStatus(500);
 	}
+});
+
+router.post('/update/:user_id', (req, res, next) => {
 	
-	//check the database if the account already exists
-	//if doesn't create account, send 200
-	//else respond with 103
 });
 
 //account deletion
-router.delete('/:user_id', (req, res, next) => {
+router.delete('/delete/:user_id', (req, res, next) => {
 
 });
 

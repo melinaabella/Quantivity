@@ -9,22 +9,6 @@ import NavBar from "./components/NavBar";
 
 
 function App() {
-  	const memberUser = {
-    	email: "member@quantivity.com",
-    	password: "sunshine123"
-  	};
-
-    const [user, setUser] = useState({name: "", email: ""});
-    const [error, setError] = useState("");
-	
-
-    const loggedin = details => {
-	    console.log(details);
-    };
-
-    const loggedout = () => {
-    	console.log(loggedout);
-    };
 
   	return (
     	<div className="App">
