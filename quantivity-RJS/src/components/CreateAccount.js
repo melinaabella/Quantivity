@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import CreateAccountForm from './CreateAccountForm';
 const server = require('../server_comm');
 
-function CreateAccount() {
+function CreateAccount(props) {
 	const [form_error, set_form_error] = useState('');
 	const [createAccountSuccessful, set_createAccountSuccessful] = useState(false);
 
@@ -27,6 +27,7 @@ function CreateAccount() {
 				} else if (response.status === 200) {
 					set_form_error('');
 					set_createAccountSuccessful(true);
+					props.set_user(form_details.email);
 				} else {
 					throw("Error code: " + response.status);
 				}

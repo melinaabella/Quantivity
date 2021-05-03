@@ -7,17 +7,20 @@ import CreateAccount from './components/CreateAccount';
 import { Route, Link } from 'react-router-dom';
 import NavBar from "./components/NavBar";
 
-
 function App() {
+
+	var [user, set_user] = useState('test@test.com');
+
+	console.log(user);
 
   	return (
     	<div className="App">
     		<NavBar/>
     		<Route exact path="/" component ={Homepage} />
-			<Route exact path="/CreateAccount" component ={CreateAccount} /> 
-    		<Route exact path="/Login" component ={Login} /> 
+			<Route exact path="/CreateAccount" render ={(props) => <CreateAccount {...props} set_user={set_user}/>} /> 
+    		<Route exact path="/Login" render ={(props) => <Login {...props} set_user={set_user}/>} /> 
     		<Route exact path="/projectwebsite" component ={projectwebsite} /> 
-			<Route exact path="/quansheet" component ={Quansheet} /> 
+			<Route exact path="/quansheet" render={(props) => <Quansheet {...props} user={user}/>} /> 
   		</div>
   	);
 }

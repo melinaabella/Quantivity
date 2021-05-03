@@ -5,20 +5,20 @@ const server = require('../server_comm');
 
 const days_of_the_week = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 
-function Quansheet() {
-	const user = 'test@test.com';
+function Quansheet(props) {
+
 	const [date, set_date] = useState(new Date());
 	const [categories, set_categories] = useState([]);
 	const [data_recieved, set_data_recieved] = useState(false);
 
 	useEffect(() => {
 		if (data_recieved) {
-			server.postAPI('userData/set/' + user + '/' + renderDate(date), {user: user, week: renderDate(date), categories: categories}).catch((error) => {
+			server.postAPI('userData/set/' + props.user + '/' + renderDate(date), {user: props.user, week: renderDate(date), categories: categories}).catch((error) => {
 				console.log(error);
 			});
 		} else {
 			console.log("Fetching Data!");
-			server.fetchAPI('userData/get/' + user + '/' + renderDate(date)).then((response) => {
+			server.fetchAPI('userData/get/' + props.user + '/' + renderDate(date)).then((response) => {
 				console.log(response);
 				set_data_recieved(true);
 				set_categories(response.categories);
@@ -27,7 +27,7 @@ function Quansheet() {
 			});
 		}
 		return (() => {
-			server.postAPI('userData/set/' + user + '/' + renderDate(date), {user: user, week: renderDate(date), categories: categories}).catch((error) => {
+			server.postAPI('userData/set/' + props.user + '/' + renderDate(date), {user: props.user, week: renderDate(date), categories: categories}).catch((error) => {
 				console.log(error);
 			})
 		});

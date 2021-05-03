@@ -5,12 +5,7 @@ import Loginform from './Loginform';
 const server = require('../server_comm');
 
 
-function Login (){
-
-	const memberUser = {
-		email: "member@quantivity.com",
-		password: "sunshine123"
-	}
+function Login (props){
     
 	const [user, setUser] = useState({name: "", email: ""});
 	const [error, setError] = useState("");
@@ -27,6 +22,7 @@ function Login (){
 					email: details.email
 				});
 				setRedirect(true);
+				props.set_user(details.email);
 			} else {
 				setError("Details do not match");
 			}
