@@ -7,14 +7,14 @@ var state = {
 
 exports.getUser = () => {
 	clearTimeout(state.timer_id);
-	state.timer_id = setTimeout(this.clearUser, 300000);
+	state.timer_id = setTimeout(this.clearUser, 3000000);
 	return state.user;
 }
 
 exports.setUser = (user) => {
 	state.user = user;
 	clearTimeout(state.timer_id);
-	state.timer_id = setTimeout(this.clearUser, 300000);
+	state.timer_id = setTimeout(this.clearUser, 3000000);
 };
 
 exports.clearUser = () => {
