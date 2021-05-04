@@ -37,7 +37,7 @@ router.post('/create/:user_id', (req, res, next) => {
 					console.log(error);
 				});
 				console.log('created new User' + newUser);
-				userManagement.setUser(req.params.user_id);
+				userManagement.setUser(req.body.email);
 				res.sendStatus(200);
 			} else {
 				//account already exists
