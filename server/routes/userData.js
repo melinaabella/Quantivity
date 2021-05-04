@@ -28,29 +28,34 @@ router.post('/set/:id', (req, res, next) => {
 	console.log(req.body);
 	console.log("updating database: {user: " + userManagement.getUser() + ", week: " + req.body.week + "}");
 
-	Users.findOne({email: userManagement.getUser()}).then((user) => {
-		console.log("Found user");
-		return Grids.findOneAndUpdate({_id: req.params.id}, {...req.body});
-	})/*.then((grid) => {
-		console.log("Found grid");
-		grid.categories = {...req.body.categories};
-		grid = {...req.body};
-		grid = new (database.getModels()).Grid(grid);
-		console.log("grid before save: " + grid);
-		return grid.save();
-	})*/.then(() => {
-		return Grids.findOne({_id: req.params.id});
-	}).then((grid) => {
-		console.log("querried grid: ");
-		console.log(grid);
-		console.log("What was supposed to be updated: ");
-		console.log(req.body);
-		console.log("update successfull");
-		res.sendStatus(200);
-	}).catch((error) => {
-		console.log(error);
-		res.sendStatus(500);
-	});
+	if (userManagement.getUser() == '') {
+		res.sendStatus(205);
+	} else {
+
+		Users.findOne({email: userManagement.getUser()}).then((user) => {
+			console.log("Found user");
+			return Grids.findOneAndUpdate({_id: req.params.id}, {...req.body});
+		})/*.then((grid) => {
+			console.log("Found grid");
+			grid.categories = {...req.body.categories};
+			grid = {...req.body};
+			grid = new (database.getModels()).Grid(grid);
+			console.log("grid before save: " + grid);
+			return grid.save();
+		})*/.then(() => {
+			return Grids.findOne({_id: req.params.id});
+		}).then((grid) => {
+			console.log("querried grid: ");
+			console.log(grid);
+			console.log("What was supposed to be updated: ");
+			console.log(req.body);
+			console.log("update successfull");
+			res.sendStatus(200);
+		}).catch((error) => {
+			console.log(error);
+			res.sendStatus(500);
+		});
+	}
 });
 
 module.exports = router;

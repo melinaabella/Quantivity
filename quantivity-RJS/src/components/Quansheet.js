@@ -17,16 +17,15 @@ function Quansheet() {
 	useEffect(() => {
 		if (data_recieved && (grid_id != null)) {
 			server.postAPI('userData/set/' + grid_id, {user: user, week: renderDate(date), categories: categories}).then((res) => {
-
+				if (res.status == 205) {
+					set_loggedout(true);
+				}
 			}).catch((error) => {
 				console.log(error);
 			});
 		} else {
 			console.log("Fetching Data!");
 			server.fetchAPI('userData/get/' + renderDate(date)).then((response) => {
-				if (response == null || response.user == '') {
-					set_loggedout(true);
-				}
 				console.log(response);
 				set_data_recieved(true);
 				set_categories(response.categories);
@@ -38,7 +37,9 @@ function Quansheet() {
 		}
 		return (() => {
 			server.postAPI('userData/set/' + grid_id, {user: user, week: renderDate(date), categories: categories}).then((res) => {
-
+				if (res.status == 205) {
+					set_loggedout(true);
+				}
 			}).catch((error) => {
 				console.log(error);
 			})
