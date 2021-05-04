@@ -15,7 +15,7 @@ router.get('/get/:week', (req, res, next) => {
 	}).then((grid) => {
 		console.log("database results: " + grid);
 		if (grid == null) {
-			let new_grid  = new Grid();
+			let new_grid  = new Grids();
 			new_grid.user = userManagement.getUser();
 			new_grid.week = req.params.week;
 			new_grid.save();
