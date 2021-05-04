@@ -4,13 +4,14 @@ const path = require('path');
 const debug = require('debug')('server:server');
 const fs = require('fs/promises');
 const database = require('../bin/db');
+const userManagement = require('../bin/userManagement');
 
-router.get('/get/:user_id/:week', (req, res, next) => {
+router.get('/get/:week', (req, res, next) => {
 	let Users = database.getModels().User;
 	let Grids = database.getModels().Grid;
-	Users.findOne({email: req.params.user_id}).then((user) => {
-		console.log("quering database: {user: " + req.params.user_id + ", week: " + req.params.week + "}");
-		return Grids.findOne({user: req.params.user_id, week: req.params.week});
+	Users.findOne({email: userManagement.getUser()}).then((user) => {
+		console.log("quering database: {user: " + userManagement.getUser() + ", week: " + req.params.week + "}");
+		return Grids.findOne({user: userManagement.getUser(), week: req.params.week});
 	}).then((grid) => {
 		console.log("database results: " + grid);
 		res.json(grid);
@@ -20,20 +21,30 @@ router.get('/get/:user_id/:week', (req, res, next) => {
 	});
 });
 
-router.post('/set/:user_id/:week', (req, res, next) => {
+router.post('/set/:id', (req, res, next) => {
 	let Users = database.getModels().User;
 	let Grids = database.getModels().Grid;
-	console.log("updating database: {user: " + req.params.user_id + ", week: " + req.params.week + "}");
+	console.log("recieved request: ");
+	console.log(req.body);
+	console.log("updating database: {user: " + userManagement.getUser() + ", week: " + req.body.week + "}");
 
-	Users.findOne({email: req.params.user_id}).then((user) => {
+	Users.findOne({email: userManagement.getUser()}).then((user) => {
 		console.log("Found user");
-		return Grids.findOne({user: req.params.user_id, week: req.params.week});
-	}).then((grid) => {
+		return Grids.findOneAndUpdate({_id: req.params.id}, {...req.body});
+	})/*.then((grid) => {
 		console.log("Found grid");
+		grid.categories = {...req.body.categories};
 		grid = {...req.body};
 		grid = new (database.getModels()).Grid(grid);
+		console.log("grid before save: " + grid);
 		return grid.save();
-	}).then(() => {
+	})*/.then(() => {
+		return Grids.findOne({_id: req.params.id});
+	}).then((grid) => {
+		console.log("querried grid: ");
+		console.log(grid);
+		console.log("What was supposed to be updated: ");
+		console.log(req.body);
 		console.log("update successfull");
 		res.sendStatus(200);
 	}).catch((error) => {

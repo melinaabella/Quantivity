@@ -22,7 +22,6 @@ function Login (props){
 					email: details.email
 				});
 				setRedirect(true);
-				props.set_user(details.email);
 			} else {
 				setError("Details do not match");
 			}

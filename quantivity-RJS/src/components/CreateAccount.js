@@ -27,7 +27,6 @@ function CreateAccount(props) {
 				} else if (response.status === 200) {
 					set_form_error('');
 					set_createAccountSuccessful(true);
-					props.set_user(form_details.email);
 				} else {
 					throw("Error code: " + response.status);
 				}

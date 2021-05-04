@@ -2,6 +2,7 @@ const { response } = require('express');
 var express = require('express');
 var router = express.Router();
 var database = require('../bin/db');
+const userManagement = require('../bin/userManagement');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -18,6 +19,7 @@ router.get('/login/:user_id', (req, res, next) => {
 				res.sendStatus(404);
 			} else {
 				res.json(results[0]);
+				userManagement.setUser(req.params.user_id);
 			}
 		})
 	}
@@ -35,6 +37,7 @@ router.post('/create/:user_id', (req, res, next) => {
 					console.log(error);
 				});
 				console.log('created new User' + newUser);
+				userManagement.setUser(req.params.user_id);
 				res.sendStatus(200);
 			} else {
 				//account already exists
