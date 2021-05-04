@@ -4,14 +4,11 @@ import { Redirect } from 'react-router';
 function Loginform({ loggedin, error}){
 	const [details, setDetails] = useState({name: "", email: "", password: ""});
 
+
 	const submitHandler = e => {
 		e.preventDefault();
 		loggedin(details);
 
-	}
-
-	const createAccount = () => {
-		setcreateAccountRedirect(true);
 	}
 
 	return (
