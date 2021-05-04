@@ -22,7 +22,7 @@ input, button{
 }
 
 
-form: {
+form {
   display: block;
   position: relative;
 }
@@ -64,7 +64,7 @@ form .form-inner .form-group {
 
 }
 
-.form-inner .form-group: label {
+.form-inner .form-group label {
   display: block;
   color: #666;
   font-size: 12px;
@@ -73,7 +73,7 @@ form .form-inner .form-group {
 
 }
 
-.form-inner .form-group: focus-within {
+.form-inner .form-group focus-within {
   color: #FE4880;
 }
 

@@ -119,7 +119,7 @@ background: linear-gradient(180deg, rgba(87,153,182,1) 0%, rgba(145,187,209,1) 0
   height: 100px;
   width: 100px;
   background-color: #eee;
-  checkmark-gap: 20px;
+  /*checkmark-gap: 20px;*/
 }
 
 /* On mouse-over, add a grey background color */
