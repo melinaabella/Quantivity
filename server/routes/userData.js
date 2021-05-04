@@ -14,7 +14,15 @@ router.get('/get/:week', (req, res, next) => {
 		return Grids.findOne({user: userManagement.getUser(), week: req.params.week});
 	}).then((grid) => {
 		console.log("database results: " + grid);
-		res.json(grid);
+		if (grid == null) {
+			let new_grid  = new Grid();
+			new_grid.user = userManagement.getUser();
+			new_grid.week = req.params.week;
+			new_grid.save();
+			res.json(new_grid);
+		} else {
+			res.json(grid);
+		}
 	}).catch((error) => {
 		console.log(error);
 		res.sendStatus(404);

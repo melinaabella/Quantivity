@@ -14,6 +14,8 @@ function Quansheet() {
 	const [user, set_user] = useState('');
 	const [grid_id, set_grid_id] = useState(null);
 
+	
+
 	useEffect(() => {
 		if (data_recieved && (grid_id != null)) {
 			server.postAPI('userData/set/' + grid_id, {user: user, week: renderDate(date), categories: categories}).then((res) => {
