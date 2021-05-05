@@ -16,6 +16,15 @@ router.get('/:download_id', (req, res, next) => {
 	case 'specification':
 		filePath = filePath + 'Quantivity_Project_Specification_2021.pdf';
 		break;
+	case 'testing':
+		filePath = filePath + 'Quantivity_Acceptance_Criteria_and_Testing_2021.pdf';
+		break;
+	case 'progress':
+		filePath = filePath + 'Quantivity_Progress_2021.pdf';
+		break;
+	case 'implementation':
+		filePath = filePath + 'Quantivity_Acceptance_Criteria_and_Testing_2021.pdf';
+		break;
 	default:
 		next(new Error ('Invalid download_id'));
 	}

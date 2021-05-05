@@ -15,7 +15,7 @@ function App() {
     		<Route exact path="/" component ={Homepage} />
 			<Route exact path="/CreateAccount" render ={(props) => <CreateAccount {...props}/>} /> 
     		<Route exact path="/Login" render ={(props) => <Login {...props}/>} /> 
-    		<Route exact path="/projectwebsite" component ={projectwebsite} /> 
+    		<Route exact path="/projectwebsite" render={() => {window.location.href = 'http://localhost:9000/about'}} /> 
 			<Route exact path="/quansheet" render={(props) => <Quansheet {...props}/>} /> 
   		</div>
   	);
