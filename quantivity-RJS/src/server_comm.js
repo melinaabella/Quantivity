@@ -1,4 +1,4 @@
-const server_path = 'http://localhost:9000/';
+const server_path = 'http://localhost:9000/';//only for development, need to change for deployment
 
 
 exports.fetchAPI = (API_path) => {
